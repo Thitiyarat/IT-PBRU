@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
                 OkHttpClient okHttpClient = new OkHttpClient();
                 Request.Builder builder = new Request.Builder();
                 Request request = builder.url(urlJSON).build();
-                Request response = okHttpClient.newCall(request).execute();
-                return request.body().toString();
+                Response response = okHttpClient.newCall(request).execute();
+                return response.body().string();
 
             }catch (Exception e){
                 Log.d("7June","error DoIn ==> "+e.toString());
                 return null;
             }
 
-            return null;
+
         } // doInBack
 
         @Override
